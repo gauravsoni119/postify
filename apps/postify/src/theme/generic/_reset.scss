@@ -1,0 +1,17 @@
+$body-background-color: #d3d3d3;
+
+a {
+  &.mat-button,
+  &.mat-raised-button,
+  &.mat-fab,
+  &.mat-mini-fab,
+  &.mat-list-item {
+    &:hover {
+      color: currentColor;
+    }
+  }
+}
+
+body {
+  background-color: $body-background-color;
+}

@@ -1,1 +1,23 @@
-<p>posts works!</p>
+<ng-container *ngIf="vm$ | async as vm">
+  <ng-container
+    *ngIf="vm.loading !== loadingState.LOADING; else loadingTemplate"
+  >
+    <ng-container *ngIf="!vm.error; else errorTemplate">
+      <postify-post-list [posts]="vm.posts"></postify-post-list>
+    </ng-container>
+  </ng-container>
+</ng-container>
+<ng-template #loadingTemplate>
+  <div class="row gy-4">
+    <div class="col-1 postify-card" *ngFor="let rect of skeletonRects">
+      <postify-skeleton-rect></postify-skeleton-rect>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <postify-error-state
+    title="Something went wrong!"
+    message="An error occurred while loading posts. Please try again later."
+  ></postify-error-state>
+</ng-template>

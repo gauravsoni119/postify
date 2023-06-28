@@ -1,16 +1,57 @@
 import { TestBed } from '@angular/core/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
-import { DataService } from './data.service';
+import { BASE_PATH, DataService } from './data.service';
+
+const POSTS = [
+  {
+    userId: 1,
+    id: 1,
+    title: 'Post title 1',
+    body: 'Post body 1',
+  },
+];
 
 describe('DataService', () => {
   let service: DataService;
+  let basePath: string;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        DataService,
+        {
+          provide: BASE_PATH,
+          useValue: 'https://jsonplaceholder.typicode.com',
+        },
+      ],
+    });
     service = TestBed.inject(DataService);
+    basePath = TestBed.inject(BASE_PATH);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should get list of posts', (done) => {
+    service.loadPosts().subscribe((loadedPosts) => {
+      expect(loadedPosts).toEqual(POSTS);
+      done();
+    });
+    const request = httpTestingController.expectOne(`${basePath}/posts`);
+    request.flush(POSTS);
+  });
+
+  afterEach(() => httpTestingController.verify());
+});
+
+describe('BASE_PATH', () => {
+  beforeEach(() => TestBed.configureTestingModule({}));
+  it('should have default value for BASE_PATH', () => {
+    const basePath = TestBed.inject(BASE_PATH);
+    expect(basePath).toEqual('');
   });
 });

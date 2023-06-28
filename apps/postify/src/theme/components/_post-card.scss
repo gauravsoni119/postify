@@ -1,0 +1,33 @@
+$post-card-width: 100%;
+$post-card-width-sm: 50%;
+$post-card-width-md: 33.33%;
+$post-card-width-lg: 20%;
+$post-card-width-xl: 10%;
+
+.postify-card {
+  width: $post-card-width;
+}
+
+@include media-breakpoint-up(sm) {
+  .postify-card {
+    width: $post-card-width-sm;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .postify-card {
+    width: $post-card-width-md;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .postify-card {
+    width: $post-card-width-lg;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .postify-card {
+    width: $post-card-width-xl;
+  }
+}

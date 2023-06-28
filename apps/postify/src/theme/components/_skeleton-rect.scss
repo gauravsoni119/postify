@@ -1,0 +1,30 @@
+$skeleton-rect-height: 150px;
+$skeleton-rect-width: 100%;
+$skeleton-rect-background: rgb(239, 241, 246);
+$skeleton-rect-animation-delay: 1.5s;
+$skeleton-rect-animation-curve: cubic-bezier(0.4, 0, 0.2, 1);
+
+.skeleton-rect {
+  display: block;
+  width: $skeleton-rect-width;
+  height: $skeleton-rect-height;
+  background: $skeleton-rect-background no-repeat;
+}
+
+.pulse {
+  animation: pulse $skeleton-rect-animation-delay $skeleton-rect-animation-curve
+    infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

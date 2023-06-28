@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve --project=postify"
+    "start": "nx serve --project=postify",
+    "build": "nx build --project=postify",
+    "test": "nx affected:test",
+    "lint": "nx affected:lint",
+    "format": "nx format"
   },
   "private": true,
   "devDependencies": {
@@ -57,6 +61,7 @@
     "@ngrx/entity": "~16.0.0",
     "@ngrx/router-store": "~16.0.0",
     "@ngrx/store": "~16.0.0",
+    "bootstrap": "^5.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

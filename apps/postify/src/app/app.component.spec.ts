@@ -1,28 +1,24 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { By } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent, NxWelcomeComponent],
+      imports: [RouterTestingModule, MatToolbarModule],
+      declarations: [AppComponent],
     }).compileComponents();
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome postify'
-    );
   });
 
-  it(`should have as title 'postify'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('postify');
+  it('should render toolbar', () => {
+    expect(
+      fixture.debugElement.query(By.css('mat-toolbar')).nativeElement
+        .textContent
+    ).toContain('Postify');
   });
 });
