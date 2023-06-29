@@ -8,21 +8,14 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/postify",
         "index": "apps/postify/src/index.html",
         "main": "apps/postify/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["apps/postify/src/polyfills.ts"],
         "tsConfig": "apps/postify/tsconfig.app.json",
-        "assets": [
-          "apps/postify/src/favicon.ico",
-          "apps/postify/src/assets"
-        ],
+        "assets": ["apps/postify/src/favicon.ico", "apps/postify/src/assets"],
         "styles": [
           "@angular/material/prebuilt-themes/indigo-pink.css",
           "apps/postify/src/styles.scss"
@@ -43,7 +36,13 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/postify/src/build-specifics/index.ts",
+              "with": "apps/postify/src/build-specifics/index.prod.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
@@ -76,21 +75,14 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/postify/**/*.ts",
-          "apps/postify/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/postify/**/*.ts", "apps/postify/**/*.html"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/postify/jest.config.ts",
         "passWithNoTests": true

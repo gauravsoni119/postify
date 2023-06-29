@@ -1,10 +1,24 @@
 import { Route } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
 
 export const appRoutes: Route[] = [
   {
-    path: 'postify',
-    loadChildren: () =>
-      import('@postify/shell').then((shell) => shell.ShellModule),
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'postify',
   },
-  {path: '**', redirectTo: 'postify'}
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'postify',
+        loadChildren: () =>
+          import('./pages/posts-bundle.module').then(
+            (bundle) => bundle.PostsBundleModule
+          ),
+      },
+    ],
+  },
+  { path: '**', redirectTo: 'postify' },
 ];

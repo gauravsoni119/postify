@@ -5,7 +5,9 @@
   data-role="postify-card"
 >
   <mat-card-header data-role="postify-card-header">
-    <mat-card-title>Post {{ selectedKey | titlecase }}</mat-card-title>
+    <mat-card-title i18n="Post title|Post header text@@postTitle"
+      >Post {{ selectedKey | titlecase }}</mat-card-title
+    >
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
