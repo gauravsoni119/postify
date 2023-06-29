@@ -18,6 +18,7 @@
       "@postify/data-access": ["libs/data-access/src/index.ts"],
       "@postify/feature": ["libs/feature/src/index.ts"],
       "@postify/shell": ["libs/shell/src/index.ts"],
+      "@postify/test-util": ["libs/test-util/src/index.ts"],
       "@postify/ui": ["libs/ui/src/index.ts"],
       "@postify/util": ["libs/util/src/index.ts"]
     }

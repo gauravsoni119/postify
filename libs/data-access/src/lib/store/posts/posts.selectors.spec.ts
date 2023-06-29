@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { LoadingState } from '@postify/util';
+import { POSTS } from '@postify/test-util';
 import * as fromPosts from './posts.reducer';
 import {
   selectError,
@@ -7,16 +9,6 @@ import {
   selectPostsState,
   selectPostsViewModel,
 } from './posts.selectors';
-import { HttpErrorResponse } from '@angular/common/http';
-
-const POSTS = [
-  {
-    userId: 1,
-    id: 1,
-    title: 'Post title 1',
-    body: 'Post body 1',
-  },
-];
 
 describe('Posts Selectors', () => {
   const state: fromPosts.PostState = {

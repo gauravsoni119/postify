@@ -1,16 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { LoadingState } from '@postify/util';
+import { POSTS } from '@postify/test-util';
 import { PostsActions } from './posts.actions';
 import { reducer, initialState } from './posts.reducer';
-import { HttpErrorResponse } from '@angular/common/http';
-
-const POSTS = [
-  {
-    userId: 1,
-    id: 1,
-    title: 'Post title 1',
-    body: 'Post body 1',
-  },
-];
 
 describe('Posts Reducer', () => {
   describe('an unknown action', () => {

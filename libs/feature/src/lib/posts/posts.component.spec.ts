@@ -3,6 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LoadingState, Post } from '@postify/util';
 import { StoreModelService } from '@postify/data-access';
+import { POSTS } from '@postify/test-util';
 import { PostsComponent } from './posts.component';
 import { By } from '@angular/platform-browser';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,14 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 describe('PostsComponent', () => {
   let fixture: ComponentFixture<PostsComponent>;
   const DEFAULT_VIEW_MODEL = {
-    posts: [
-      {
-        id: 1,
-        userId: 1,
-        title: 'Title',
-        body: 'Body',
-      },
-    ],
+    posts: [...POSTS],
     loading: LoadingState.IDLE,
     error: undefined,
   };

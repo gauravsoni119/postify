@@ -3,17 +3,9 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { POSTS } from '@postify/test-util';
 
 import { BASE_PATH, DataService } from './data.service';
-
-const POSTS = [
-  {
-    userId: 1,
-    id: 1,
-    title: 'Post title 1',
-    body: 'Post body 1',
-  },
-];
 
 describe('DataService', () => {
   let service: DataService;

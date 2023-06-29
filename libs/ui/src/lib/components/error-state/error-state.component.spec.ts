@@ -1,14 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ErrorStateComponent } from './error-state.component';
 import { MatIconModule } from '@angular/material/icon';
-import { By } from '@angular/platform-browser';
+import { getTextContent } from '@postify/test-util';
+import { ErrorStateComponent } from './error-state.component';
 
 describe('ErrorStateComponent', () => {
   let component: ErrorStateComponent;
   let fixture: ComponentFixture<ErrorStateComponent>;
-
-  const getTextContent = (q: string) =>
-    fixture.debugElement.query(By.css(q)).nativeElement.textContent.trim();
 
   const selectors = {
     title: '[data-role="error-state-title"]',
@@ -30,7 +27,9 @@ describe('ErrorStateComponent', () => {
   });
 
   it('should render error state', () => {
-    expect(getTextContent(selectors.title)).toEqual(component.title);
-    expect(getTextContent(selectors.message)).toEqual(component.message);
+    expect(getTextContent(selectors.title, fixture)).toEqual(component.title);
+    expect(getTextContent(selectors.message, fixture)).toEqual(
+      component.message
+    );
   });
 });

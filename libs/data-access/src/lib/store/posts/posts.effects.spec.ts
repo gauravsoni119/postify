@@ -1,21 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
+import { POSTS } from '@postify/test-util';
 
 import { PostsEffects } from './posts.effects';
 import { DataService } from '../../services/data.service';
 import { PostsActions } from './posts.actions';
-import { HttpErrorResponse } from '@angular/common/http';
-
-const POSTS = [
-  {
-    userId: 1,
-    id: 1,
-    title: 'Post title 1',
-    body: 'Post body 1',
-  },
-];
 
 describe('PostsEffects', () => {
   let actions$: Observable<any>;
