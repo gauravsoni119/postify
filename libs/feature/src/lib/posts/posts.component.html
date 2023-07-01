@@ -9,7 +9,10 @@
 </ng-container>
 <ng-template #loadingTemplate>
   <div class="row gy-4">
-    <div class="col-1 postify-card" *ngFor="let rect of skeletonRects">
+    <div
+      class="col-1 postify-card-container"
+      *ngFor="let rect of skeletonRects"
+    >
       <postify-skeleton-rect></postify-skeleton-rect>
     </div>
   </div>

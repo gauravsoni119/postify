@@ -155,7 +155,8 @@ On top of `scss`, we are using inverted triangle short named [ITCSS](https://www
 ## Unit Testcases
 
 We are using jest as test runner and also as an assertion library. You need to run `npm test` command. It will run all your test cases and create HTML coverage report for you(via **_istanbul_**).
-**Code coverage screenShots**
+
+**Code coverage screenShots**:-
 ![alt text](./apps/postify/src/assets/code-coverage-data-access.png 'Data access coverage report')
 ![alt text](./apps/postify/src/assets/code-coverage-feature.png 'Feature coverage report')
 ![alt text](./apps/postify/src/assets/code-coverage-feature.png 'Feature coverage report')

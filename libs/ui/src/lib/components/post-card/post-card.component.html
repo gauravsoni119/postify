@@ -1,7 +1,10 @@
 <mat-card
-  class="h-100"
+  class="h-100 postify-card"
   (click)="onPostClick()"
+  (keydown.enter)="onPostClick()"
+  (keydown.space)="$event.preventDefault(); onPostClick()"
   role="button"
+  tabindex="0"
   data-role="postify-card"
 >
   <mat-card-header data-role="postify-card-header">

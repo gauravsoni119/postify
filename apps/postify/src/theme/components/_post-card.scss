@@ -1,33 +1,48 @@
-$post-card-width: 100%;
-$post-card-width-sm: 50%;
-$post-card-width-md: 33.33%;
-$post-card-width-lg: 20%;
-$post-card-width-xl: 10%;
+@use '@angular/material' as mat;
 
-.postify-card {
-  width: $post-card-width;
+$post-card-container-width: 100%;
+$post-card-container-width-sm: 50%;
+$post-card-container-width-md: 33.33%;
+$post-card-container-width-lg: 20%;
+$post-card-container-width-xl: 10%;
+
+$post-card-scale: 1.1;
+$post-card-animation-time: 0.1s;
+$post-card-animation-type: ease-in-out;
+
+.postify-card-container {
+  width: $post-card-container-width;
 }
 
 @include media-breakpoint-up(sm) {
-  .postify-card {
-    width: $post-card-width-sm;
+  .postify-card-container {
+    width: $post-card-container-width-sm;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .postify-card {
-    width: $post-card-width-md;
+  .postify-card-container {
+    width: $post-card-container-width-md;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .postify-card {
-    width: $post-card-width-lg;
+  .postify-card-container {
+    width: $post-card-container-width-lg;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .postify-card {
-    width: $post-card-width-xl;
+  .postify-card-container {
+    width: $post-card-container-width-xl;
+  }
+}
+
+.postify-card {
+  transition: all $post-card-animation-time $post-card-animation-type;
+  &:hover,
+  &:focus-visible {
+    scale: $post-card-scale;
+    @include mat.elevation(5);
   }
 }
