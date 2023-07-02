@@ -179,6 +179,9 @@ We are using jest as test runner and also as an assertion library. You need to r
 - **State management** via ngrx store.
 - **A11y** supportive app
 
+## Demo
+![postify-demo](https://github.com/gauravsoni119/postify/assets/8476712/f208e649-d495-4ea1-b4e9-83d0c1642d45)
+
 ## What can we do more?
 
 However, this application has enough features to extend and reuse. But still, there are chances to make it better and more approachable.
