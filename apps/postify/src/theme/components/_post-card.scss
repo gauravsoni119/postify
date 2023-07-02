@@ -1,44 +1,46 @@
 @use '@angular/material' as mat;
 
-$post-card-container-width: 100%;
-$post-card-container-width-sm: 50%;
-$post-card-container-width-md: 33.33%;
-$post-card-container-width-lg: 20%;
-$post-card-container-width-xl: 10%;
+$post-card-wrapper-width: 100%;
+$post-card-wrapper-width-sm: 50%;
+$post-card-wrapper-width-md: 33.33%;
+$post-card-wrapper-width-lg: 20%;
+$post-card-wrapper-width-xl: 10%;
 
 $post-card-scale: 1.1;
 $post-card-animation-time: 0.1s;
 $post-card-animation-type: ease-in-out;
 
-.postify-card-container {
-  width: $post-card-container-width;
+.postify-card-wrapper {
+  width: $post-card-wrapper-width;
 }
 
 @include media-breakpoint-up(sm) {
-  .postify-card-container {
-    width: $post-card-container-width-sm;
+  .postify-card-wrapper {
+    width: $post-card-wrapper-width-sm;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .postify-card-container {
-    width: $post-card-container-width-md;
+  .postify-card-wrapper {
+    width: $post-card-wrapper-width-md;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .postify-card-container {
-    width: $post-card-container-width-lg;
+  .postify-card-wrapper {
+    width: $post-card-wrapper-width-lg;
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .postify-card-container {
-    width: $post-card-container-width-xl;
+  .postify-card-wrapper {
+    width: $post-card-wrapper-width-xl;
   }
 }
 
 .postify-card {
+  display: block;
+  height: 100%;
   transition: all $post-card-animation-time $post-card-animation-type;
   &:hover,
   &:focus-visible {

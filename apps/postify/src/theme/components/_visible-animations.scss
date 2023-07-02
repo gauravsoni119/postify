@@ -1,0 +1,13 @@
+$visible-animation-time: 0.1s;
+$visible-animation-type: ease-in-out;
+
+.visible-animation-descendent {
+  opacity: 0;
+  height: 100%;
+  display: block;
+  transition: all $visible-animation-time $visible-animation-type;
+
+  &.visible {
+    opacity: 1;
+  }
+}

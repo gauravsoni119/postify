@@ -110,9 +110,9 @@ const modifiedString = myString + ' World'; // Creates a new string "Hello World
 ## Question 5
 
 > What part of a new job do you think is more important:
-
-- Choose your own hardware, but work with a company supplied operating system image.
-- You’re offered a standard piece of mediocre hardware. Free to pick your own Software.33..
+>
+> - Choose your own hardware, but work with a company supplied operating system image.
+> - You’re offered a standard piece of mediocre hardware. Free to pick your own Software.33..
 
 ## Answer
 
