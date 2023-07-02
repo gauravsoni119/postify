@@ -37,6 +37,7 @@ export class VisibleAnimationDirective implements AfterViewInit {
         entries.forEach((entry) => {
           entry.target.classList.toggle('visible', entry.isIntersecting);
           if (entry.isIntersecting) {
+            // Once item is inside viewport, we don't need to animate it again
             observer.unobserve(entry.target);
           }
         });

@@ -1,6 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '@postify/util';
+import { delay } from 'rxjs';
 
 /**
  * Configure the base path for the api in order to prevent duplicating it in each request
@@ -21,6 +22,6 @@ export class DataService {
   ) {}
 
   loadPosts() {
-    return this.http.get<Post[]>(`${this.basePath}/posts`);
+    return this.http.get<Post[]>(`${this.basePath}/posts`).pipe(delay(2000));
   }
 }

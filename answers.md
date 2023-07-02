@@ -13,7 +13,7 @@ JWT made up of three parts separated by dot(.):- `header`, `payload` and `signat
 
 1. The token should have strong security key and should be saved securely.
 1. The token should not contain any sensitive information such as password, personal information.
-1. The token should always transmitted to server over https instead of http. Sending it over http might result into the token hijacking.https://angular.io/api/platform-browser/DomSanitizer
+1. The token should always transmitted to server over https instead of http. Sending it over http might result into the token hijacking.
 1. The token should have exp(expiration) time after which token becomes invalid.
 1. The token will be stored in client-side storage such as local storage or cookies. The care should be taken to secure the storage from XSS attacks.
 
@@ -28,7 +28,7 @@ Allowing user to send HTML in messages for sure associate security risks in our 
 
 1. **Cross-site scripting(XSS)**: Bad actors can inject malicious scripts into the HTML content of the messages. When the other user view the message, the browser will render the HTML and execute the malicious scripts. This might result in stealing the sensitive information, perform actions on behalf of user.
 
-To mitigate the risk, we can implement the following measures:-
+   To mitigate the risk, we can implement the following measures:-
 
 - We can `sanitize` the user generated HTML content. Angular has [built-in mechanism](https://angular.io/api/platform-browser/DomSanitizer) to sanitize the HTML content before rendering. The sanitization process will encode the html and strip out potentially dangerous elements and attributes.
 - We can implement a `Content Security Policy(CSP)` that restricts the types of content that can be loaded and executed on your web pages. CSP can help mitigate the impact of XSS attacks by limiting the sources from which scripts can be loaded.
@@ -45,19 +45,20 @@ To mitigate the risk, we can implement the following measures:-
 
 > Explain the difference between mutable and immutable objects.
 
-- What is an example of an immutable object in JavaScript?
-- What are the pros and cons of immutability?
-- How can you achieve immutability in your own code?
+> - What is an example of an immutable object in JavaScript?
+> - What are the pros and cons of immutability?
+> - How can you achieve immutability in your own code?
 
 ## Answer:
 
 > Explain the difference between mutable and immutable objects
 
-- Mutable Objects: Mutable objects are objects whose state or value can be modified after they are created. This means you can change their properties, elements, or attributes without creating a new object. Examples of mutable objects include arrays, objects, and classes in JavaScript.
-- Immutable Objects: Immutable objects, on the other hand, are objects whose state cannot be changed once they are created. This means you cannot modify their properties, elements, or attributes after instantiation. Instead, if you want to create a modified version of an immutable object, you create a new object with the desired changes. Examples of immutable objects in JavaScript include strings, numbers, and booleans.
+- **Mutable Objects**: Mutable objects are objects whose state or value can be modified after they are created. This means you can change their properties, elements, or attributes without creating a new object. Examples of mutable objects include arrays, objects, and classes in JavaScript.
+- **Immutable Objects**: Immutable objects, on the other hand, are objects whose state cannot be changed once they are created. This means you cannot modify their properties, elements, or attributes after instantiation. Instead, if you want to create a modified version of an immutable object, you create a new object with the desired changes. Examples of immutable objects in JavaScript include strings, numbers, and booleans.
 
 > What is an example of an immutable object in JavaScript?
-> A common example of an immutable object in JavaScript is a string. Once a string is created, you cannot change its characters individually. Instead, if you want a modified version of the string, you create a new one. For example:
+
+A common example of an immutable object in JavaScript is a string. Once a string is created, you cannot change its characters individually. Instead, if you want a modified version of the string, you create a new one. For example:
 
 ```javascript
 const myString = 'Hello';
@@ -67,17 +68,17 @@ const modifiedString = myString + ' World'; // Creates a new string "Hello World
 > What are the pros and cons of immutability?
 > **Pros of immutability**:
 
-- Predictable Behavior: Immutable objects cannot be changed unexpectedly, leading to more predictable code behavior. This will reduce bugs related to unexpected side-effects.
-- Functional Programming: Immutability is a core principle in functional programming paradigms. Pure functions are easier to test, reason about, and compose together, which can lead to more maintainable and modular code.
-- Optimized Memory Usage: Although creating new objects every time might cause extra memory overhead, in certain scenarios, it can also provide memory optimizations. For example, technique such as `Structural sharing`, used in persistent data structures, enable efficient reuse of unchanged parts, minimizing memory consumption.
-- Performance Optimization: In some scenarios, immutability can improve performance. For example, implementing memoization is much easier with immutable data structures.
+- **Predictable Behavior**: Immutable objects cannot be changed unexpectedly, leading to more predictable code behavior. This will reduce bugs related to unexpected side-effects.
+- **Functional Programming**: Immutability is a core principle in functional programming paradigms. Pure functions are easier to test, reason about, and compose together, which can lead to more maintainable and modular code.
+- **Optimized Memory Usage**: Although creating new objects every time might cause extra memory overhead, in certain scenarios, it can also provide memory optimizations. For example, technique such as `Structural sharing`, used in persistent data structures, enable efficient reuse of unchanged parts, minimizing memory consumption.
+- **Performance Optimization**: In some scenarios, immutability can improve performance. For example, implementing memoization is much easier with immutable data structures.
 
 **Cons of immutability**:
 
-- Memory Overhead: Creating new objects for every change can lead to increased memory usage.
-- Complexity: Writing code using immutable patterns may require additional logic or libraries, making the codebase more complex.
-- Learning Curve: If you are working in the team, then everyone should be aware of it and have strong understanding of `functional programming`. It can take time for teams to become proficient in working with immutable data structures.
-- Performance: In certain scenarios, frequent creation of new objects(especially in case of large data structures) can lead to performance degradation.
+- **Memory Overhead**: Creating new objects for every change can lead to increased memory usage.
+- **Complexity**: Writing code using immutable patterns may require additional logic or libraries, making the codebase more complex.
+- **Learning Curve**: If you are working in the team, then everyone should be aware of it and have strong understanding of `functional programming`. It can take time for teams to become proficient in working with immutable data structures.
+- **Performance**: In certain scenarios, frequent creation of new objects(especially in case of large data structures) can lead to performance degradation.
 
 > How can you achieve immutability in your own code?
 > To achieve immutability in our code, we can follow these practices:
@@ -94,10 +95,13 @@ const modifiedString = myString + ' World'; // Creates a new string "Hello World
 ## Answer
 
 1. **Analyze Performance**: We can use tools like lighthouse or browser devtools to identify the performance issues in the webapp. After analyzing, we can look for opportunity to reduce the size of resources(styles, scripts etc), eliminate render blocking elements and improve the load time.
+
 2. **Optimize Assets**:
 
 - We can optimize our assets by `minifying` our CSS and javascript files to reduce the bundle size. Angular cli do this for us.
 - We can use `code splitting` techniques to reduce the initial load time. Angular can handle this out of the box for us.
+- We can `inline` the style and javascript which are required for initial load.
+- We can use compression algorithms such as `gzip` or `brotli` to compress files before sending to browser.
 - We can use `modern image format(WebP)` and `responsive images` with different loading techniques.
 - We can `defer` the loading of render blocking styles and scripts.
 - We can use [resource prioritization](https://web.dev/prioritize-resources/) techniques to load critical resource first.
@@ -106,6 +110,7 @@ const modifiedString = myString + ' World'; // Creates a new string "Hello World
 
 - We can use `CDN` to serve the static assets from the edge locations that are closer to user.
 - We can set `cache headers` to enable browser for caching the static assets.
+- We can use `http2` protocol to send data faster over network
 
 ## Question 5
 

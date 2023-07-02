@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { PostsActions } from './posts/posts.actions';
 import { selectPostsViewModel } from './posts/posts.selectors';
 
+/** Facade service to wrap all store logic that feature libs want to use  */
 @Injectable({
   providedIn: 'root',
 })

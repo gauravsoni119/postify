@@ -1,10 +1,10 @@
 # Postify App
 
-Application to view list of posts. It's easy to scale and reuse with ability to customize styles through scss variables.
+A web application to view list of posts. It's easy to scale and reuse with ability to customize styles through scss variables.
 
 ## Tools and Technologies
 
-### Framework
+## Framework
 
 [Angular](https://angular.io/)
 
@@ -40,8 +40,9 @@ We can use the below commands to `serve`, `test`, `lint`, `build` and `format` t
 
 ## Architecture
 
-Nx monorepos are used to build **postify** app. Nx also has `monorepo pattern` that is followed to build **postify** app. The pattern allow us to build scalable and reusable apps by splitting the `app` into small and maintainable units called as `libs`. The `app` contains minimal amount of code. It's purpose is to combine different `shell` libraries and render it in browser. With fine grained libs, we can also take advantage of nx [`affected`](https://nx.dev/concepts/affected) commands. `Affected` commands will allow us to run the command against only changed code. For example, if we are doing changes in `data-access` and we need to run pipeline to perform CI/CD step. Without `affected` commands, all the steps such as `formatting`, `linting`, `tests` will be run for all libs. But with `affected` only, the pipeline will be run against the data-access or it's dependent code which will significantly reduce the CI/CD time.
+Nx monorepos are used to build **postify** app. Along with monorepos, the [shell library pattern](https://indepth.dev/posts/1117/the-shell-library-patterns-with-nx-and-monorepo-architectures) is used. The pattern allow us to build scalable and reusable apps by splitting the `app` into small and maintainable units called as `libs`. The `app` contains minimal amount of code. It's purpose is to combine different `shell` libraries and render it in browser. With fine grained libs, we can also take advantage of nx [`affected`](https://nx.dev/concepts/affected) commands. `Affected` commands will allow us to run the command against only changed code. For example, if we are doing changes in `data-access` and we need to run pipeline to perform CI/CD step. Without `affected` commands, all the steps such as `formatting`, `linting`, `tests` will be run for all libs. But with `affected` only, the pipeline will be run against the data-access or it's dependent code which will significantly reduce the CI/CD time.
 
+**Architecture Diagram**
 ![alt text](./apps/postify/src/assets/postify-arc.svg 'Architecture of app')
 
 ## Apps
@@ -86,7 +87,7 @@ The following libraries are there inside our libs folder:-
 
 ### Shell
 
-App specific library whose purpose to expose all the features used in the application. Right now we have one `posts-feature` but later on more features can be easily added. It has access to all other libs(`feature`, `data-access`, `ui`, `util`). Let's explore what we have in the shell:-
+Domain specific library whose purpose is to expose all the features related to that domain. Right now we have one `posts-feature` but later on more features can be easily added. It has access to all other libs(`feature`, `data-access`, `ui`, `util`). Let's explore what we have in the shell:-
 
 **ShellModule**: Module that assemble all the feature specific to our `posts` domain. We have only one feature which is to show the list of `posts` as cards. The features are loaded via `routes`.
 
@@ -132,13 +133,15 @@ The shared ui library is a collection of reusable ui components, directives, pip
 
 **SkeletonRectComponent**: A ui component to display skeleton loader while posts are loaded.
 
+**postifyVisibleAnimation**: A directive to animate the list items which are outside the viewport with the help of [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
 **Test-Util**
 
 "The test-util library is a collection of mocks, stubs, and test utility functions. It is intended for use exclusively within `spec.ts` files. Let's explore what the test-util library has to offer:-
 
 **test-util**: Utility functions that can be used in tests to remove the `boilerplate` or `duplicate` code.
 
-**mocks**: List of mock posts that can be used in tests.
+**mocks**: List of mock posts that are used in tests.
 
 ## Design Systems
 
@@ -180,6 +183,7 @@ We are using jest as test runner and also as an assertion library. You need to r
 - **A11y** supportive app
 
 ## Demo
+
 ![postify-demo](https://github.com/gauravsoni119/postify/assets/8476712/f208e649-d495-4ea1-b4e9-83d0c1642d45)
 
 ## What can we do more?
