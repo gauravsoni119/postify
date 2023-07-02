@@ -30,16 +30,16 @@ Allowing user to send HTML in messages for sure associate security risks in our 
 
    To mitigate the risk, we can implement the following measures:-
 
-- We can `sanitize` the user generated HTML content. Angular has [built-in mechanism](https://angular.io/api/platform-browser/DomSanitizer) to sanitize the HTML content before rendering. The sanitization process will encode the html and strip out potentially dangerous elements and attributes.
-- We can implement a `Content Security Policy(CSP)` that restricts the types of content that can be loaded and executed on your web pages. CSP can help mitigate the impact of XSS attacks by limiting the sources from which scripts can be loaded.
+   - We can `sanitize` the user generated HTML content. Angular has [built-in mechanism](https://angular.io/api/platform-browser/DomSanitizer) to sanitize the HTML content before rendering. The sanitization process will encode the html and strip out potentially dangerous elements and attributes.
+   - We can implement a `Content Security Policy(CSP)` that restricts the types of content that can be loaded and executed on your web pages. CSP can help mitigate the impact of XSS attacks by limiting the sources from which scripts can be loaded.
 
 2. **Cross-Site Request Forgery(CSRF)**: Bad actors can prepare a malicious HTML message containing an embedded image or link to an external site. When other user views the message, the browser will render the malicious message and perform actions on behalf of user without user's knowledge or consent.
 
-To mitigate the risk, we can implement the following measures:-
+   To mitigate the risk, we can implement the following measures:-
 
-- We can implement CSRF protection mechanisms such as generating and validating unique tokens (e.g., `CSRF tokens`) for each user session and including them in form submissions or AJAX requests.
-- We can use the `SameSite` attribute for cookies to restrict their usage to the same site or prevent them from being sent in cross-origin requests.
-- We can ensure that sensitive actions (e.g., modifying data, deleting accounts) require explicit user consent through additional `confirmation steps` or re-authentication.
+   - We can implement CSRF protection mechanisms such as generating and validating unique tokens (e.g., `CSRF tokens`) for each user session and including them in form submissions or AJAX requests.
+   - We can use the `SameSite` attribute for cookies to restrict their usage to the same site or prevent them from being sent in cross-origin requests.
+   - We can ensure that sensitive actions (e.g., modifying data, deleting accounts) require explicit user consent through additional `confirmation steps` or re-authentication.
 
 ## Question 3:
 
